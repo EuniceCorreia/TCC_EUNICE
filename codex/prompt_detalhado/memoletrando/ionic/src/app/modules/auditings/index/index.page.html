@@ -1,0 +1,95 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-menu-button mode="ios" slot="start"></ion-menu-button>
+        <ion-title (click)="content.scrollToTop(500)">Auditoria</ion-title>
+        <ion-buttons slot="end">
+            <!-- <ion-button mode="ios" [routerLink]="['/auditings/create']" *ifAuth="[{create: 'auditings'}]" color="white">
+                <ion-icon name="add-circle"></ion-icon>
+            </ion-button> -->
+            <ion-button mode="ios" (click)="toggleSearch()" color="{{ showFilter ? 'medium' : 'white' }}">
+                <ion-icon name="funnel"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+    <ion-refresher class="text-darkprimary" slot="fixed" (ionRefresh)="paginate($event)">
+        <ion-refresher-content pullingText="Atualizar" refreshingSpinner="dots" refreshingText="Atualizando">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-row>
+        <ion-col class="ion-no-padding">
+            <ion-list class="no-border mb-0" lines="full" mode="ios">
+                <!-- filter -->
+                <ion-item-divider color="primary" mode="ios" [hidden]="!showFilter">
+                    <ion-col>
+                        <ion-searchbar [(ngModel)]="filters.id" (ionChange)="paginate()" debouce="500"
+                            class="p0 input-light" mode="ios" placeholder="ID ..." #search>
+                        </ion-searchbar>
+                    </ion-col>
+                    <ion-col>
+                        <ion-searchbar [(ngModel)]="filters.causer_name" (ionChange)="paginate()" debouce="500"
+                            class="p0 input-light" mode="ios" placeholder="Responsável ..." #search>
+                        </ion-searchbar>
+                    </ion-col>
+                </ion-item-divider>
+
+                <!-- header -->
+                <ion-item-divider color="primary" mode="md">
+                    <ion-col size="2">#ID</ion-col>
+                    <ion-col size="4">Ação</ion-col>
+                    <ion-col size="3">Responsável</ion-col>
+                    <ion-col size="3">Data</ion-col>
+                </ion-item-divider>
+
+                <!-- items -->
+                <ion-list>
+                    <ion-item *ngFor="let auditing of auditings">
+                        <ion-col size="2">#{{ auditing.id }}</ion-col>
+                        <ion-col size="4">
+                            {{ auditing.description }}
+                        </ion-col>
+                        <ion-col size="3">
+                            {{ auditing.causer?.name }}
+                        </ion-col>
+                        <ion-col size="3">
+                            {{ auditing.created_at.format('MMM DD, YYYY HH:mm:ss') }}
+                        </ion-col>
+                    </ion-item>
+                </ion-list>
+
+                <ng-container *ngIf="loading">
+                    <div *ngFor="let tr of trs">
+                        <ion-skeleton-text animated style="width: 100%; height: 50px"></ion-skeleton-text>
+                    </div>
+                </ng-container>
+
+                <ion-infinite-scroll threshold="30px" (ionInfinite)="paginate(null, $event)">
+                    <ion-infinite-scroll-content loadingSpinner="none"></ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+
+                <ion-row class="no-border" text-center *ngIf="total_of_data === auditings.length && total_of_data>0">
+                    <ion-col class="text-center">
+                        <ion-icon [hidden]="auditings.length < 10" color="medium" class="ion-float-end mt-15"
+                            size="large" name="caret-up-circle-outline" (click)="content.scrollToTop(500)">
+                        </ion-icon>
+                        <ion-label color="medium" class="p20">
+                            Todos os registros foram listados <ion-icon name="thumbs-up" color="medium"></ion-icon>
+                        </ion-label>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row color="light" text-center *ngIf="!loading && !auditings.length">
+                    <ion-col class="text-center">
+                        <ion-label padding-top padding-bottom>
+                            Não há registros.
+                        </ion-label>
+                    </ion-col>
+                </ion-row>
+            </ion-list>
+
+        </ion-col>
+    </ion-row>
+</ion-content>

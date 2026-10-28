@@ -1,0 +1,13 @@
+# Este projeto deve ser servido apontando o document root do Apache/Nginx para a pasta public/.
+# Este .htaccess é apenas uma proteção adicional caso o servidor seja configurado incorretamente
+# para apontar para a raiz do projeto: ele bloqueia o acesso direto a config/ e src/, que contêm
+# credenciais de banco de dados e código-fonte que não deveriam ser servidos como arquivos estáticos.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(config|src)/ - [F,L]
+</IfModule>
+
+<FilesMatch "\.(properties)$">
+    Require all denied
+</FilesMatch>

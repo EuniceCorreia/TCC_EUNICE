@@ -1,0 +1,8 @@
+<div class="container cursor-pointer" appDnd (fileDropped)="onFileDropped($event)">
+    <input type="file" #fileDropRef id="fileDropRef" multiple accept="image/jpeg, image/jpg, image/webp, image/png"
+        (change)="fileBrowseHandler($event)" class="cursor-pointer" />
+    <ion-icon name="cloud-upload" class="fs-2-5"></ion-icon>
+    <h3>Arraste e solte as imagens aqui</h3>
+    <h3>ou</h3>
+    <ion-button for="fileDropRef" size="small" shape="round">Procure novas imagens</ion-button>
+</div>

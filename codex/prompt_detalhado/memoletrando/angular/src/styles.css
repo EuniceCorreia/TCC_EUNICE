@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.success-snackbar .mdc-snackbar__surface {
+    background: #00D084;
+    color: white;
+}
+.success-snackbar button {
+    background-color: #00D084;
+    color: white;
+    border: none;
+}
+.danger-snackbar .mdc-snackbar__surface {
+    background: #F44336 !important;
+    color: white !important;
+}
+.danger-snackbar button {
+    background-color: #F44336;
+    color: white !important;
+    border: none;
+}
+
+::ng-deep .snack-style{
+    background-color:rgb(72, 236, 39);
+    color: rgb(82, 82, 82);
+}
+
+.text-primary {
+    color: #00D084 !important
+}
+
+.d-none {
+    display: none !important;
+}
+
+.text-session {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin-top: -30px !important;
+    text-shadow: -1px -1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, 1px 0px 0px #000;
+}
+
+.bg-geral {
+    min-height: 100vh;
+    background-image: url("./assets/image/bg-geral1.svg");
+    background-size: cover;
+    background-position: center;
+}

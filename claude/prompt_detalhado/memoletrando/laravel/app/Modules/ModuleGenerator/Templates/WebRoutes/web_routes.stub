@@ -1,0 +1,7 @@
+<?php
+
+Route::get('{{ModelNameUrl}}/get', '{{ModelName}}Controller@get')             ->name('{{ModelNameUrl}}.get');
+Route::get('{{ModelNameUrl}}/find', '{{ModelName}}Controller@find')           ->name('{{ModelNameUrl}}.find');
+Route::get('{{ModelNameUrl}}/paginate', '{{ModelName}}Controller@paginate')   ->name('{{ModelNameUrl}}.paginate');
+Route::put('{{ModelNameUrl}}/{id}/restore', '{{ModelName}}Controller@restore')->name('{{ModelNameUrl}}.restore');
+Route::resource('{{ModelNameUrl}}', '{{ModelName}}Controller');                     //{{ModelNameUrl}} resource

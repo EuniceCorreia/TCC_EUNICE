@@ -1,0 +1,23 @@
+.virtual-keyboard {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 300px;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ccc;
+  padding: 5px;
+}
+
+.keyboard-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.keyboard-row:last-child {
+  margin-bottom: 0;
+}
+
+.app-keyboard-button {
+  margin: 0 5px;
+}

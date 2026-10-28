@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'store' => '{{ModelName}} #:id registrado.',
+    'update' => '{{ModelName}} #:id alterado.',
+    'destroy' => '{{ModelName}} #:id removido.',
+    'restore' => '{{ModelName}} #:id restaurado.',
+];

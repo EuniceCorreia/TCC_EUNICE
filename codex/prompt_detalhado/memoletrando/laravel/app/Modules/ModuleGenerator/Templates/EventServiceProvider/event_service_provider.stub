@@ -1,0 +1,16 @@
+<?php
+
+namespace {{Namespace}}\Providers;
+
+use {{Namespace}}\{{ModelName}};
+use {{Namespace}}\{{ModelName}}Observer;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class {{ModelName}}EventServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        parent::boot();
+    }
+
+}

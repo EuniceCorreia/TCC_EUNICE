@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-title>{{ title }}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss(false)">
+                <ion-icon color="white" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list lines="none" mode="ios">
+        <ion-item>
+            <ion-searchbar mode="ios" class="pl-0 pr-0 mt-5" placeholder="pesquisar" (ionChange)="filterList($event)"
+                debounce="250" #search></ion-searchbar>
+        </ion-item>
+        <ion-item class="m5" color="medium" detail *ngFor="let option of options" (click)="dismiss(option)" mode="ios"
+            style="cursor: pointer;">
+            {{ option.user.name }} <small slot="end">selecionar</small>
+            <br>
+        </ion-item>
+        <ion-row *ngIf="!loading && !options.length">
+            <ion-col text-center padding>
+                Não há registros.
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="loading">
+            <ion-col class="text-center" ion-padding>
+                Carregando...
+            </ion-col>
+        </ion-row>
+    </ion-list>
+</ion-content>

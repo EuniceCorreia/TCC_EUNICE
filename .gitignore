@@ -1,0 +1,28 @@
+# Dependencias e builds
+node_modules/
+vendor/
+dist/
+.angular/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+.scannerwork/
+.sonarqube/
+.vs/
+.idea/
+coverage/
+*.log
+
+# Arquivos com credenciais
+props.properties
+.env
+Credentials.cs
+*.pem
+*.pfx
+*.jks
+*.keystore

@@ -1,0 +1,136 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button mode="ios" text="" icon="chevron-back-outline" [routerLink]="['/game-figures']"
+                routerLink="back">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title (click)="debug()">{{ editing ? 'Editando' : 'Nova' }} Figura do Jogo </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+    <ion-row>
+        <ion-col class="ion-no-padding">
+            <ion-card color="white" mode="ios">
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col size="12" size-sm="9">
+                            <ion-label class="fw-600" color="medium">Palavra*</ion-label>
+                            <ion-input type="text" class="input-light" [(ngModel)]="game_figure.name"
+                                placeholder=""></ion-input>
+                        </ion-col>
+                        <ion-col size="12" size-sm="3">
+                            <ion-label class="fw-600" color="medium">
+                                Ativo
+                            </ion-label>
+                            <ion-item>
+                                <ion-toggle [(ngModel)]="game_figure.active" color="success" slot="start">
+                                </ion-toggle>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="12" size-sm="9">
+                            <ion-label class="fw-600" color="medium">Descrição</ion-label>
+                            <ion-textarea [(ngModel)]="game_figure.description" class="input-light" rows="5"></ion-textarea>
+                        </ion-col>
+                        <ion-col size="12" size-md="6">
+                            <ion-label class="fw-600" color="medium">Selecione um Nível*</ion-label>
+                            <div (click)="selectLevel()" class="input-select bg-light br-6 p12 d-flex ion-align-items-center" style="justify-content: space-between;">
+                                <span class="fw-500" *ngIf="game_figure.level && game_figure.level.id">
+                                    {{ game_figure.level.name }}
+                                </span>
+                                <span *ngIf="!game_figure.level || !game_figure.level.id">
+                                    Selecione um Nível
+                                </span>
+                                <ion-icon *ngIf="!loading_levels" style="float: right;" name="chevron-down"></ion-icon>
+                                <ion-spinner *ngIf="loading_levels" style="float: right;"></ion-spinner>
+                            </div>
+                        </ion-col>
+                        <ion-col size="12" size-md="6">
+                            <ion-label class="fw-600" color="medium">Selecione um Tema*</ion-label>
+                            <div (click)="selectTheme()" class="input-select bg-light br-6 p12 d-flex ion-align-items-center" style="justify-content: space-between;">
+                                <span class="fw-500" *ngIf="game_figure.theme && game_figure.theme.id">
+                                    {{ game_figure.theme.name }}
+                                </span>
+                                <span *ngIf="!game_figure.theme || !game_figure.theme.id">
+                                    Selecione um Tema
+                                </span>
+                                <ion-icon *ngIf="!loading_themes" style="float: right;" name="chevron-down"></ion-icon>
+                                <ion-spinner *ngIf="loading_themes" style="float: right;"></ion-spinner>
+                            </div>
+                        </ion-col>
+                        <ion-col size="12" >
+                            
+                        </ion-col>
+                        <ion-col size="12">
+                            <ion-label class="fw-600" color="medium">{{ game_figure.category_id ? 'Categoria Selecionada*' : 'Selecione uma Categoria Abaixo*' }}</ion-label>
+                            <div class="input-select bg-light br-6 p12 d-flex ion-align-items-center mb-10" style="justify-content: space-between;"  *ngIf="game_figure.category && game_figure.category.id">
+                                <span class="fw-500">
+                                    {{ game_figure.category.name }}
+                                </span>
+                            </div>
+                            <div *ngIf="game_figure.theme_id && !categories.length">
+                                <ion-button size="small" (click)="show_new_category = !show_new_category" *ngIf="!show_new_category">Adicionar Nova Categoria</ion-button>
+                                <div *ngIf="show_new_category" class="d-flex ion-align-items-center">
+                                    <ion-input class="input-light p0" [(ngModel)]="new_category.name"></ion-input>
+                                    <ion-button size="small" color="success" (click)="saveNewCategory(new_category)">Salvar</ion-button>  
+                                    <ion-button size="small" color="danger" (click)="show_new_category = !show_new_category">Cancelar</ion-button>  
+                                </div>
+                                <small>Nenhuma categoria encontrada para o tema selecionado. Adicione uma nova categoria!</small>
+                            </div>
+                            <div *ngIf="!game_figure.theme_id" class="text-danger">
+                                Selecione um tema para carregar as categorias
+                            </div>
+                            <div *ngIf="categories.length">
+                                <ion-button size="small" (click)="show_new_category = !show_new_category" *ngIf="!show_new_category">Adicionar Nova Categoria</ion-button>
+                                <div *ngIf="show_new_category" class="d-flex ion-align-items-center">
+                                    <ion-input class="input-light p0" [(ngModel)]="new_category.name"></ion-input>
+                                    <ion-button size="small" color="success" (click)="saveNewCategory(new_category)">Salvar</ion-button>  
+                                    <ion-button size="small" color="danger" (click)="show_new_category = !show_new_category">Cancelar</ion-button>  
+                                </div>
+                                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding (click)="selectCategory(node)" class="cursor-pointer">
+                                        <button mat-icon-button disabled></button>
+                                        #{{ node.id }} {{node.name}}
+                                        <small class="ml-5 mr-5 mt-3" [ngClass]="{'text-primary': game_figure.category_id != node.id, 'text-success': game_figure.category_id == node.id }">{{ game_figure.category_id && game_figure.category_id == node.id ? 'Selecionado' : 'Selecionar' }}</small>
+                                        <ion-button size="small" color="medium" (click)="node.show_input = !node.show_input" *ngIf="!node.show_input"><ion-icon name="add"></ion-icon> Nova subcategoria</ion-button>
+                                        <div *ngIf="node.show_input" class="d-flex ion-align-items-center ml-10">
+                                            <ion-input class="input-light p0" [(ngModel)]="node.new_subcategory_name"></ion-input>
+                                            <ion-button size="small" color="success" (click)="saveNewSubcategory(node)">Salvar</ion-button>  
+                                            <ion-button size="small" color="danger" (click)="node.show_input = !node.show_input">Cancelar</ion-button>  
+                                        </div>
+                                    </mat-tree-node>
+                                    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding (click)="selectCategory(node)" class="cursor-pointer">
+                                        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+                                            <ion-icon class="fs-1-2" name="{{treeControl.isExpanded(node) ? 'chevron-down' : 'chevron-forward'}}">
+                                            </ion-icon>
+                                        </button>
+                                        #{{ node.id }} {{node.name}}
+                                        <small class="ml-5 mr-5 mt-3" [ngClass]="{'text-primary': game_figure.category_id != node.id, 'text-success': game_figure.category_id == node.id }">{{ game_figure.category_id && game_figure.category_id == node.id ? 'Selecionado' : 'Selecionar' }}</small>
+                                        <ion-button size="small" color="medium" (click)="node.show_input = !node.show_input" *ngIf="!node.show_input"><ion-icon name="add"></ion-icon> Nova subcategoria</ion-button>
+                                        <div *ngIf="node.show_input" class="d-flex ion-align-items-center ml-10">
+                                            <ion-input class="input-light p0" [(ngModel)]="node.new_subcategory_name"></ion-input>
+                                            <ion-button size="small" color="success" (click)="saveNewSubcategory(node)">Salvar</ion-button>  
+                                            <ion-button size="small" color="danger" (click)="node.show_input = !node.show_input">Cancelar</ion-button>  
+                                        </div>
+                                    </mat-tree-node>
+                                </mat-tree>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <image-input [(image)]="game_figure.image"
+                        [label]="'Imagem Referente a Palavra (tamanho recomendado 600px x 600px)'" [resizeToWidth]="600"
+                        [resizeToHeight]="600" (imageChange)="updateImage($event)"></image-input>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="mt-20 ion-justify-content-center">
+        <ion-col size="12" size-sm="4">
+            <ion-button (click)="save()" expand="full" shape="round" mode="ios" color="success" [disabled]="saving">
+                {{ saving ? 'Salvando...' : 'Salvar' }}
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>

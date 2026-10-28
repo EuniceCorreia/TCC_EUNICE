@@ -1,0 +1,17 @@
+<?php
+
+namespace {{Namespace}}\Providers;
+
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
+
+class {{ModelName}}AuthServiceProvider extends AuthServiceProvider
+{
+    protected $policies = [
+        '{{Namespace}}\{{ModelName}}' => '{{Namespace}}\{{ModelName}}Policy',
+    ];
+    
+    public function register()
+    {
+        $this->registerPolicies();
+    }
+}

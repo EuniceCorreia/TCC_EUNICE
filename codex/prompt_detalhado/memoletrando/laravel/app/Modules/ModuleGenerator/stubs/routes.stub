@@ -1,0 +1,9 @@
+<?php
+
+Route::group(['namespace' => '{{Namespace}}'], function() {
+   Route::get('{{ModelNamePluralLowerCase}}/get/ng-table', '{{ModelName}}Controller@ngTableGet')->name('{{ModelNamePluralLowerCase}}.ngtable');
+   Route::get('{{ModelNamePluralLowerCase}}/get/array', '{{ModelName}}Controller@getArray')     ->name('{{ModelNamePluralLowerCase}}.get-array');
+   Route::get('{{ModelNamePluralLowerCase}}/{id}/get', '{{ModelName}}Controller@get')           ->name('{{ModelNamePluralLowerCase}}.get');
+   Route::put('{{ModelNamePluralLowerCase}}/{id}/restore', '{{ModelName}}Controller@restore')   ->name('{{ModelNamePluralLowerCase}}.restore');
+   Route::resource('{{ModelNamePluralLowerCase}}', '{{ModelName}}Controller');                        //{{ModelNamePluralLowerCase}} resource
+});

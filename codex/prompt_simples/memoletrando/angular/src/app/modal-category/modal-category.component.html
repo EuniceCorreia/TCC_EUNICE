@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="">
+    <span class="text-white">ESCOLHA UMA CATEGORIA</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Fechar" (click)="close()">
+        <mat-icon class="text-white">close</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding (click)="dismiss(node)" [ngClass]="{'d-none': !node.count_figures}">
+        <button mat-icon-button disabled></button>
+        {{node.name}} <small><button mat-button class="btn ml-10">Jogar</button></small>
+    </mat-tree-node>
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding (click)="dismiss(node)" [ngClass]="{'d-none': !node.count_figures}">
+        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+        </button>
+        {{node.name}} <small><button mat-button class="btn ml-10">Jogar</button></small>
+    </mat-tree-node>
+</mat-tree>
+
+<div class="row" *ngIf="!dataSource || !dataSource.data.length">
+    <div class="col-12 text-center">
+        Nenhuma Categoria para o tema selecionado
+    </div>
+</div>

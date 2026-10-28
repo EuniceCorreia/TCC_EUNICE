@@ -1,0 +1,37 @@
+<div class="bg-geral">
+    <mat-toolbar class="color-game" color="primary">
+        <mat-toolbar-row>
+            <!-- <button mat-icon-button class="example-icon" aria-label="Menu">
+                <mat-icon class="text-white">menu</mat-icon>
+            </button> -->
+            <span class="text-white">Jogo da memória</span>
+            <span class="example-spacer"></span>
+            <span class="example-spacer"></span>
+                <span class="text-white" aria-label="Sair" (click)="logoff()">
+                    Sair
+                </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="container h-100">
+        <div class="row mt-5" *ngIf="!loading">
+            <div class="col-12 p-lr-90">
+                <mat-card class="center padding-0 pl-5 pr-5" color="primary">
+                    <mat-card-content class="height-card">
+                        <h2 class="text-primary" *ngIf="themes.length">ESCOLHA UM TEMA</h2>
+                        <mat-grid-list cols="3" rowHeight="1:1">
+                            <mat-grid-tile class="padding-top-2" *ngFor="let theme of themes"  (click)="openModalCategory(theme)">
+                                <mat-card class="example-card">
+                                    <img mat-card-image [src]="url_s3 + theme.image.path" alt="{{ theme.name }}" *ngIf="theme.image && theme.image.path" class="img-card">
+                                </mat-card>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                        <h3 *ngIf="!themes.length">NENHUM TEMA PARA JOGAR</h3>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <div>
+        <img src="./../../../../../assets/image/character/brain_question.png" class="img-character">
+    </div>
+</div>

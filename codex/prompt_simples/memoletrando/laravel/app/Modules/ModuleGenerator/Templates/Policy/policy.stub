@@ -1,0 +1,34 @@
+<?php
+
+namespace {{Namespace}};
+
+use Illuminate\Foundation\Auth\User;
+use App\Modules\Base\BasePolicy;
+
+class {{ModelName}}Policy extends BasePolicy
+{
+    public function view(User $user)
+    {
+        return $this->can($user, 'view', '{{ModelNamePluralLowerCase}}');
+    }
+
+    public function create(User $user)
+    {
+        return $this->can($user, 'create', '{{ModelNamePluralLowerCase}}');
+    }
+
+    public function update(User $user)
+    {
+        return $this->can($user, 'update', '{{ModelNamePluralLowerCase}}');
+    }
+
+    public function delete(User $user)
+    {
+        return $this->can($user, 'delete', '{{ModelNamePluralLowerCase}}');
+    }
+
+    public function restore(User $user)
+    {
+        return $this->can($user, 'restore', '{{ModelNamePluralLowerCase}}');
+    }
+}

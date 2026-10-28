@@ -1,0 +1,579 @@
+* {
+    font-family: "Open Sans" !important;
+}
+
+.logo {
+    height: 48px;
+    // margin: 0 auto;
+    padding: 4px;
+}
+
+
+
+.popover-info {
+    .popover-content {
+        width: 420px;
+        --width: 420px;
+    }
+}
+
+ion-toolbar {
+    --background: var(--ion-color-primary);
+}
+
+ion-content {
+    --background: var(--ion-color-light);
+    background-color: var(--ion-color-light);
+}
+
+ion-searchbar {
+    border-radius: 0.45em;
+}
+
+ion-title {
+    --color: var(--ion-color-white);
+}
+
+ion-menu {
+    --width: 270px !important;
+    --min-width: 270px !important;
+    --max-width: 270px !important;
+    border-right: 1px solid var(--ion-color-light) !important;
+}
+
+.split-pane-md.split-pane-visible > .split-pane-side {
+    max-width: 270px !important;
+    --max-width: 270px !important;
+}
+
+.avatar {
+    margin: 20px 8px;
+    position: relative;
+    color: var(--ion-color-medium);
+}
+
+.icon-avatar {
+    font-size: 3rem;
+    display: inline-block;
+    color: #ddd;
+}
+
+.text-avatar {
+    position: absolute;
+    top: 10px;
+    left: 60px;
+}
+
+.text-avatar small {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+}
+
+ion-menu-button {
+    --background: var(--ion-color-cobalt);
+    --color: var(--ion-color-white);
+}
+
+ion-back-button {
+    --background: transparent;
+    color: var(--ion-color-white) !important;
+}
+
+ion-back-button:hover {
+    --opacity: 0.6;
+    --background-hover: transparent !important;
+}
+
+.list-md,
+.list-ios {
+    background: var(--ion-color-light) !important;
+    padding: 0;
+}
+
+ion-item {
+    --color: var(--ion-color-dark4);
+    --background: var(--ion-color-white);
+    --border-color: var(--ion-color-light);
+    font-size: 0.9rem;
+    ion-icon,
+    fa-icon {
+        --color: var(--ion-color-medium) !important;
+    }
+}
+
+ion-item:hover {
+    --background: var(--ion-color-light);
+}
+
+ion-label {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+ion-input,
+input {
+    border-radius: 0.45em !important;
+    padding: 0.6875rem 0.85rem !important;
+    color: var(--ion-color-dark3) !important;
+    width: 100%;
+}
+
+.swiper-pagination-departments-bullets {
+    bottom: 0px !important;
+    left: 0;
+    width: 100%;
+}
+
+.swiper-container-horizontal>.swiper-pagination-departments-bullets .swiper-pagination-bullet {
+    margin: 0 4px;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--ion-color-medium);
+}
+
+.suffix-password-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    color: grey;
+    z-index: 99;
+}
+
+.input-select {
+    padding: 12px 15px;
+}
+
+ion-backdrop {
+    opacity: 0.5 !important;
+}
+
+.input-dark {
+    --background: var(--ion-color-dark2);
+    background: var(--ion-color-dark2);
+    --color: var(--ion-color-white);
+    color: var(--ion-color-white);
+    -webkit-appearance: none;
+    transition-duration: 0.15s;
+    transition-property: border, background-color, color, box-shadow;
+    transition-timing-function: ease-in;
+    border: 1px solid var(--ion-color-dark2);
+}
+
+.input-light {
+    --background: var(--ion-color-light);
+    background: var(--ion-color-light);
+    --color: var(--ion-color-dark2);
+    color: var(--ion-color-dark2);
+    -webkit-appearance: none;
+    padding: 12px;
+    border-radius: 7px;
+    transition-duration: 0.15s;
+    transition-property: border, background-color, color, box-shadow;
+    transition-timing-function: ease-in;
+    border: 1px solid var(--ion-color-white);
+}
+
+.input-transparent {
+    --background: rgba(var(--ion-color-white-rgb), 0.1);
+    background: rgba(var(--ion-color-white-rgb), 0.1);
+    --color: var(--ion-color-white) !important;
+    color: var(--ion-color-white) !important;
+    -webkit-appearance: none;
+    transition-duration: 0.15s;
+    transition-property: border, background-color, color, box-shadow;
+    transition-timing-function: ease-in;
+    border: none;
+}
+
+.input-clear-icon {
+    background-image: url("/assets/images/close.svg") !important;
+}
+
+ion-textarea,
+textarea {
+    border-radius: 0.45em !important;
+    width: 100%;
+    max-width: 100%;
+    resize: vertical;
+}
+
+.native-input {
+    padding: 0.6875rem 0.85rem !important;
+}
+
+.input-light:hover,
+.input-light:active,
+.input-light:focus {
+    border: 1px solid var(--ion-color-dark) !important;
+}
+
+ion-textarea.custom-textarea {
+    border-radius: 0.45em !important;
+    width: 100%;
+    max-width: 100%;
+    resize: vertical;
+    .textarea-wrapper.sc-ion-textarea-md {
+        height: 100%;
+        .native-textarea.sc-ion-textarea-md {
+            height: 100%;
+        }
+    }
+}
+
+ion-select,
+.select-light,
+.select-light button {
+    --background: var(--ion-color-light);
+    --color: var(--ion-color-cobalt);
+    -webkit-appearance: none;
+    width: 100%;
+    border: 1px solid var(--ion-color-light) !important;
+    border-radius: 0.45em !important;
+}
+
+.input-select {
+    --background: var(--ion-color-light);
+    background: var(--ion-color-light);
+    --color: var(--ion-color-cobalt);
+    -webkit-appearance: none;
+    width: 100%;
+    border: 1px solid var(--ion-color-light) !important;
+    border-radius: 0.45em !important;
+}
+
+.select-light:hover,
+.select-light:active,
+.select-light:focus {
+    border: 1px solid var(--ion-color-success) !important;
+}
+
+.alert-radio-label,
+.alert-title {
+    color: var(--ion-color-cobalt) !important;
+}
+
+ion-card-header {
+    border-bottom: 1px solid var(--ion-color-medium);
+}
+
+.bg-transparent {
+    --background: transparent;
+}
+
+.bg-transparent:hover {
+    --background: transparent;
+}
+
+.checkbox {
+    margin-left: -16px !important;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+}
+
+.table thead {
+    color: var(--ion-color-light);
+    background: var(--ion-color-cobalt);
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.table thead th {
+    padding: 0.7rem;
+    min-width: 100px !important;
+}
+
+.table tr {
+    border-bottom: 1px solid rgba(var(--ion-color-cobalt-rgb), 0.3);
+}
+
+.table tbody > tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.table td {
+    padding: 0.2rem 0.7rem;
+    vertical-align: middle;
+    // font-weight: 300;
+}
+
+.table .thead {
+    background: var(--ion-color-darkprimary);
+}
+
+.loading-wrapper {
+    background: black !important;
+    color: var(--ion-color-white) !important;
+}
+
+.loading-wrapper .spinner-lines {
+    color: var(--ion-color-white) !important;
+}
+
+ion-searchbar {
+    --clear-button-color: #ffffff !important;
+    --icon-color: #0000ff;
+}
+
+.searchbar-input {
+    padding: 6px 40px !important;
+}
+
+.w100 {
+    display: block;
+    width: 100% !important;
+}
+
+.popover-arrow.sc-ion-popover-ios,
+.popover-content.sc-ion-popover-ios {
+    --background: var(--ion-color-white) !important;
+    // color: var(--ion-color-white) !important;
+}
+
+.sc-ion-searchbar-ios-h {
+    height: 44px;
+}
+ion-infinite-scroll {
+    height: 10px;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+.menu-separator {
+    font-size: 0.6em !important;
+    font-weight: bold;
+    background: var(--ion-color-white) !important;
+    color: var(--ion-color-medium) !important;
+    padding: 30px 0 0px 20px;
+    margin-bottom: 0;
+}
+
+.icon-input {
+    font-size: 1.6rem;
+    position: absolute;
+    right: 16px;
+    top: 41px;
+    z-index: 10;
+}
+
+.ion-item-component:hover {
+    --ion-color-base: var(--ion-color-success) !important;
+}
+
+.div-input-light {
+    --background: var(--ion-color-light);
+    background: var(--ion-color-light);
+    --color: var(--ion-color-dark2);
+    color: var(--ion-color-dark2);
+    -webkit-appearance: none;
+    transition-duration: 0.15s;
+    transition-property: border, background-color, color, box-shadow;
+    transition-timing-function: ease-in;
+    border: 1px solid var(--ion-color-white);
+    padding: 0.6875rem 0.85rem !important;
+    border-radius: 0.45em !important;
+}
+
+ion-segment-button {
+    --background-activated: var(--ion-color-white);
+    --background-checked: var(--ion-color-white);
+    --color-activated: var(--ion-color-white);
+    --color-checked: var(--ion-color-white);
+}
+
+.text-success {
+    color: var(--ion-color-success);
+}
+
+.text-white {
+    color: var(--ion-color-white) !important;
+}
+
+.text-secondary {
+    color: var(--ion-color-secondary);
+}
+
+.icon-input-component {
+    font-size: 2rem;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    z-index: 10;
+}
+
+.card-modal {
+    .modal-wrapper{
+        width: 60%;
+    }
+}
+
+.bg-danger {
+    background: var(--ion-color-danger);
+    --background: var(--ion-color-danger);
+}
+
+.bg-primary {
+    background: var(--ion-color-primary);
+    --background: var(--ion-color-primary);
+}
+
+.bg-secondary {
+    background: var(--ion-color-secondary);
+    --background: var(--ion-color-secondary);
+}
+
+.bg-tertiary {
+    background: var(--ion-color-tertiary);
+    --background: var(--ion-color-tertiary);
+}
+
+.bg-white {
+    background: var(--ion-color-white) !important;
+    --background: var(--ion-color-white) !important;
+    background-color: var(--ion-color-white) !important;
+}
+
+.text-customer {
+    color: var(--ion-color-primary);
+}
+
+.text-secondary {
+    color: var(--ion-color-secondary);
+}
+
+.text-primary {
+    color: var(--ion-color-primary);
+}
+
+.text-danger {
+    color: var(--ion-color-danger) !important;
+}
+
+.bg-customer {
+    --background: var(--ion-color-primary);
+    background: var(--ion-color-primary);
+}
+
+.bg-warning {
+    --background: var(--ion-color-warning);
+    background: var(--ion-color-warning);
+}
+
+.vehicle-modal {
+    .modal-wrapper {
+        width: 70rem;
+    }
+}
+.select-payment-page {
+    .modal-wrapper {
+        width: 60%;
+        // height: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .select-payment-page {
+        .modal-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+
+.reorder-images-modal {
+    .modal-wrapper {
+        width: 50rem;
+    }
+}
+
+.li-ionic4-datePicker {
+    .modal-wrapper {
+        --ion-color-primary: var(
+            --ion-color-primary
+        ); // This Variable used for the change of colour ion-datepicker only.
+        ion-button {
+            --ion-color-primary: var(--ion-color-primary);
+            // --ion-color-primary: green; // This Variable used for the change colour of buttons only.
+            // --ion-color-primary-tint: lightgreen; // This Variable changes the tint color of background when click buttons.
+            // --border-radious: 0px; // This Variable changes the border radious of buttons.
+            // button customization css write here...
+        }
+    }
+}
+
+.resume-text {
+    padding: 20px;
+    white-space: pre-wrap;
+
+    .alert-wrapper {
+        max-width: 500px;
+    }
+}
+
+.delta-alert {
+    .alert-title.sc-ion-alert-md {
+        color: var(--ion-color-danger) !important;
+        font-size: 18px;
+        font-weight: bold !important;
+    }
+}
+
+a[disabled],
+button[disabled],
+html input[disabled] {
+    cursor: default;
+    color: var(--ion-color-dark3) !important;
+    opacity: 0.5;
+}
+
+.message-notification {
+    right: 20px;
+    width: 25% !important;
+    // font-weight: bold;
+    margin-left: auto;
+    font-size: 1.1rem
+}
+
+.modal-help-chat {
+    backdrop-filter: blur(2px);
+}
+
+.modal-help-chat .modal-wrapper {
+    width: 80% !important;
+    height: 40vh !important;
+    border-radius: 20px;
+    --background: transparent !important;
+    background: transparent !important;
+}
+
+.modal-help-chat .modal-wrapper ion-content {
+    --background: var(--ion-color-primary) !important;
+}
+
+.image-cropped-modal {
+    backdrop-filter: blur(2px);
+}
+
+.image-cropped-modal .modal-wrapper {
+    width: 80% !important;
+    height: 80% !important;
+    --background: transparent !important;
+    background: transparent !important;
+}
+
+g.line-chart > g:last-of-type > g:nth-child(n) g.line-series > path {
+    stroke-width: 3;
+    stroke-linecap: round;
+  }

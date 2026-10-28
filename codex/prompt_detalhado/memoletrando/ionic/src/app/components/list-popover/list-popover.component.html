@@ -1,0 +1,8 @@
+<ion-list lines="true" inset="true" class="m0 no-border">
+    <ion-item-divider class="pt-10 pb-10" color="red">{{ title }}</ion-item-divider>
+    <ion-item *ngFor="let button of buttons" (click)="dismiss(button.value)">
+        <span [ngStyle]="{'color': button.color}">
+            {{ button.text }}
+        </span>
+    </ion-item>
+</ion-list>

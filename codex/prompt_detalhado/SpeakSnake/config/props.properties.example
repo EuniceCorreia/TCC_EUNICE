@@ -1,0 +1,8 @@
+ASSETS=assets/
+USER=root
+PASSWORD=
+DATABASE=ssdata
+HOST=localhost
+PORT=3307
+ADMIN_PASSWORD=troque_esta_senha
+BASEURL="/"

@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-menu-button mode="ios" slot="start"></ion-menu-button>
+        <ion-title>Configurações</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-row>
+        <ion-col>
+            <ion-card color="white" mode="ios">
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label class="fw-600" color="medium">Nome da Aplicação</ion-label>
+                            <ion-input class="input-light" [(ngModel)]="config.game_name"
+                                placeholder="Nome da Aplicação"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <!-- <ion-row>
+                        <ion-col>
+                            <ion-label class="fw-600" color="medium">EUR/BRL</ion-label>
+                            <input type="text" currencyMask placeholder="EUR/BRL" class="input-light "
+                                [(ngModel)]="config.eur_value"
+                                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left', precision: 4, allowNegative: false }">
+                        </ion-col>
+                    </ion-row> -->
+                    <ion-row>
+                        <ion-col size-sm="4">
+                            <ion-button (click)="save()" expand="full" shape="round" mode="ios" color="success">
+                                Salvar
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+        </ion-col>
+    </ion-row>
+</ion-content>

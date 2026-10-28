@@ -1,0 +1,56 @@
+<ion-row class="pt-10 mb-10">
+
+    <ion-col size="12" *ngIf="image && !image.path && !image.base64">
+        <ion-label class="fw-600" color="medium">{{label}}</ion-label>
+        <input type="file" id="inputFile" accept="image/png, image/jpeg, image/webp" class="bg-light"
+            (change)="fileChangeEvent($event)" />
+    </ion-col>
+
+    <ion-col size="4">
+        <div *ngIf="imageChangedEvent && imageChangedEvent.isTrusted == true">
+            <ion-label class="fw-600" color="medium">Selecione a área desejada:</ion-label>
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                [aspectRatio]="aspectRatio" format="webp" [resizeToWidth]="resizeToWidth"
+                [resizeToHeight]="resizeToHeight" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+        </div>
+    </ion-col>
+
+    <ion-col *ngIf="croppedImage" class="centered" size="1">
+        <ion-icon class="fs-2" name="arrow-forward"></ion-icon>
+    </ion-col>
+
+    <ion-col *ngIf="croppedImage" size="4">
+        <ion-label class="fw-600" color="medium">Resultado:</ion-label>
+        <img class="p10" [src]="croppedImage" />
+    </ion-col>
+
+    <ion-col *ngIf="imageChangedEvent && imageChangedEvent.isTrusted == true" class="centered" size="2">
+        <ion-button color="primary" (click)="pushImage()">Usar imagem</ion-button>
+    </ion-col>
+
+    <ion-col size="12">
+        <ion-label *ngIf="image.base64 || image.path" class="fw-600" color="medium">{{label}}</ion-label>
+        <span *ngIf="!image.path && !image.base64 && !(imageChangedEvent && imageChangedEvent.isTrusted == true)">Não há
+            imagem cadastrada.</span>
+    </ion-col>
+
+    <ion-col size="4" class="text-center" *ngIf="image.base64 || image.path">
+        <ion-row>
+            <ion-col>
+                <img [src]="image.base64 || url_s3 + get_thumb(image, 'thumb_')" />
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button color="primary" (click)="changeImage(image, $event)">
+                    <ion-icon slot="start" name="repeat"></ion-icon> Trocar Imagem
+                </ion-button>
+                <ion-button color="danger" (click)="removeImage(image, $event)">
+                    <ion-icon slot="start" name="trash"></ion-icon> Remover
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-col>
+
+</ion-row>

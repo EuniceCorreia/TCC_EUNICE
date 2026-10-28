@@ -1,0 +1,81 @@
+<div class="bg-geral">
+    <mat-toolbar class="color-game" color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button class="example-icon" aria-label="Volar" (click)="backPage()">
+                <mat-icon class="text-white">arrow_back_ios</mat-icon>
+            </button>
+            <span class="text-white">Jogo da memória</span>
+            <span class="example-spacer"></span>
+            <span class="example-spacer"></span>
+                <span class="text-white" aria-label="Sair" (click)="logoff()">
+                    Sair
+                </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="container h-100">
+        <div class="row mt-5">
+            <div class="col-12 p-lr-90">
+                <mat-card class="center padding-0 pl-5 pr-5" color="primary" *ngIf="!loading_category && !loading_levels">
+                    <!-- <mat-card-title class="tittle-toolbar">Selecione o Nível e a Quantidade de Imagens</mat-card-title> -->
+                    <mat-card-content class="height-card">
+                        <div class="container h-100">
+                            <!-- <div class="row">
+                                <div class="col-12">
+                                    <h2 class="text-primary">ESCOLHA O NÍVEL DE DIFICULDADE</h2>
+                                </div>
+
+                                   style="background-image: url(' + {{ url_s3 + category.image.path }} + ');"
+
+                            </div> -->
+                            <div class="row h-100">
+                                <div class="col-6">
+                                    <div class="h-100">
+                                        <div class="split left" [ngStyle]="setBackgroundImage()">
+                                        </div>
+                                        <div class="centered">
+                                            <h1 *ngIf="category" class="category-name text-shadow">{{ category.name }}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <h2 class="text-primary">
+                                        <b>ESCOLHA O NÍVEL <br>DE DIFICULDADE</b>
+                                    </h2>
+                                
+                                    <div class="split right">
+                                        <div>
+                                            <!-- <p>NÚMERO DE IMAGENS</p>
+                                            <h2 class="mb-0">{{ game_setting.quantity_images }}</h2>
+                                            <mat-slider step="1" min="2" max="{{ max_quantity_images }}"  class="input-range">
+                                                <input matSliderThumb [(ngModel)]="game_setting.quantity_images">
+                                            </mat-slider> -->
+                                            <div class="button-row">
+                                                <button mat-raised-button color="accent" class="button-level {{ game_setting.level_id == level.id ? 'button-selected' : '' }}" *ngFor="let level of levels" (click)="chooseLevel(level)">
+                                                    {{ level.name }}
+                                                </button>
+                                            </div>
+                                            <div class="button-row full-width">
+                                                <button mat-raised-button color="primary" (click)="saveGameSetting()" [disabled]="loading_save">
+                                                    <span class="text-white">
+                                                        {{ loading_save ? 'Salvando' : 'Jogar' }}
+                                                    </span>
+                                                    <mat-spinner class="mat-spinner" *ngIf="loading_save"></mat-spinner>
+                                                    <mat-icon style="color: white" iconPositionEnd  *ngIf="!loading_save">
+                                                        play_arrow
+                                                    </mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <div>
+        <img src="./../../../../../assets/image/character/brain_question.png" class="img-character">
+    </div>
+</div>

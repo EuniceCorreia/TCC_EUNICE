@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss()" mode="ios" color="white">
+                <ion-icon slot="end" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Processar Imagem</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+    <ion-row class="ion-justify-content-center">
+        <ion-col size="7" class="text-center">
+            <div>
+                <ion-label class="fw-600" color="medium">
+                    Imagem em processamento
+                </ion-label>
+            </div>
+
+            <div *ngIf="image_changed_event">
+                <image-cropper [imageChangedEvent]="image_changed_event" [maintainAspectRatio]="true"
+                    [aspectRatio]="aspect_ratio" [format]="format" [resizeToWidth]=resize_to_width
+                    [resizeToHeight]=resize_to_height (imageCropped)="imageCropped($event)"
+                    (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                </image-cropper>
+            </div>
+        </ion-col>
+        <ion-col class="text-center">
+            <ion-label class="fw-600" color="medium">
+                Imagem final
+            </ion-label>
+            <img *ngIf="cropped_image" [src]="cropped_image" />
+            <ion-button color="success" (click)="pushImage()" shape="round">Incluir imagem</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button mode="ios" text="" icon="chevron-back-outline" [routerLink]="['/themes']"
+                routerLink="back">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title (click)="debug()">{{ editing ? 'Editando' : 'Novo' }} Tema </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+    <ion-row>
+        <ion-col class="ion-no-padding">
+            <ion-card color="white" mode="ios">
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col size="12" size-sm="9">
+                            <ion-label class="fw-600" color="medium">Nome*</ion-label>
+                            <ion-input type="text" class="input-light" [(ngModel)]="theme.name"
+                                placeholder="Banner promocional"></ion-input>
+                        </ion-col>
+                        <ion-col size="12" size-sm="3">
+                            <ion-label class="fw-600" color="medium">
+                                Ativo
+                            </ion-label>
+                            <ion-item>
+                                <ion-toggle [(ngModel)]="theme.active" color="success" slot="start">
+                                </ion-toggle>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <image-input [(image)]="theme.image"
+                        [label]="'Imagem do Tema (tamanho recomendado 600px x 600px)'" [resizeToWidth]="600"
+                        [resizeToHeight]="600" (imageChange)="updateImage($event)"></image-input>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="mt-20 ion-justify-content-center">
+        <ion-col size="12" size-sm="4">
+            <ion-button (click)="save()" expand="full" shape="round" mode="ios" color="success" [disabled]="saving">
+                {{ saving ? 'Salvando...' : 'Salvar' }}
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>

@@ -1,0 +1,9 @@
+<?php
+
+use {{Namespace}}\Http\Controllers\{{ModelName}}Controller;
+
+Route::get('{{ModelNameUrl}}/get', [{{ModelName}}Controller::class, 'get']);
+Route::get('{{ModelNameUrl}}/find', [{{ModelName}}Controller::class, 'find']);
+Route::get('{{ModelNameUrl}}/paginate', [{{ModelName}}Controller::class, 'paginate']);
+Route::put('{{ModelNameUrl}}/{id}/restore', [{{ModelName}}Controller::class, 'restore']);
+Route::resource('{{ModelNameUrl}}', {{ModelName}}Controller::class);

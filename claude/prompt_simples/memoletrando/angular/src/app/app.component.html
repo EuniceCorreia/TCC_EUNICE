@@ -1,0 +1,17 @@
+<div id="container" class="">
+  <div id="sub-container" class="vertical-center">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<ngx-spinner id="mySpinner"  type= "line-scale-party"
+size= "large"
+bdColor= "rgb(0 0 0 / 63%)"
+loadingText="Aguarde..."
+color= "white"
+template=
+  "<img src='./../assets/image/character/loading11.gif' style=' max-width: 100%;
+  max-height: 230px;
+  filter: drop-shadow(6px 5px 4px gray)  hue-rotate(334deg); margin-top: -50px;' /><p class='text-session'>
+    Aguarde...
+</p>"></ngx-spinner>

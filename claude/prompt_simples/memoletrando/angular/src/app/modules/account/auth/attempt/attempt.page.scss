@@ -1,0 +1,45 @@
+* {
+    text-align: center;
+}
+
+ion-spinner {
+    font-size: 3em;
+}
+
+div.bg-login {
+    height: 100vh;
+    // background: linear-gradient(177deg, rgb(65, 252, 134), rgb(253 128 160));;
+    background-image: url("./../../../../../assets/image/bg.svg");
+    background-size: cover;
+    background-position: center;
+}
+
+.mat-spinner {
+    width: 25px !important;
+    margin-right: 10px;
+    --mdc-circular-progress-active-indicator-color: white;
+    text-shadow: -1px -1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, 1px 0px 0px #000;
+}
+
+img {
+    // position: fixed;
+    // right: 10px;
+    // top: 10px;
+    max-width: 100%;
+    max-height: 400px;
+    filter: drop-shadow(6px 5px 4px gray)  hue-rotate(334deg);
+}
+
+
+.text-session {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin-top: -70px;
+    text-shadow: -1px -1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, 1px 0px 0px #000;
+}

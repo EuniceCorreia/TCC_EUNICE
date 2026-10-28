@@ -1,0 +1,41 @@
+<!-- <div class="timer text-center">{{ minutes }}:{{ seconds }}</div> -->
+
+<div>
+    <div class="balloon-animation">
+        <span class="text">Encontre os pares</span>
+        <span class="arrow"></span>
+    </div>
+</div>
+
+
+<div class="d-flex align-items-center justify-content-center vh-100 bg-color">
+    <div class="container">
+        <div class="row" *ngFor="let row of linhasCartas">
+            <div class="col-md-3 mt-5" *ngFor="let card of row">
+                <mat-card class="card d-flex align-items-center justify-content-center" (click)="selectCard(card)">
+                    <div class="flip-card"
+                        [ngClass]="{'card-selected': this.selectedCards.includes(card) || this.correctPlay.includes(card)}">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="question-marker">?</div>
+                                <img src="../../../assets/image/character/brain_baloon.png" alt="Avatar"
+                                    class="char-card">
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="{{card.img}}" alt="Avatar"
+                                    style="width:250px;height:300px;border: 5px solid #fff;">
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- characters -->
+<img src="../../../assets/image/character/brain_ideia.png" style="width: 300px;" class="char-1" alt="">
+
+<!-- Alert -->
+<app-alert *ngIf="alertNextPage" (closeModalEvent)="closeAlert()"></app-alert>

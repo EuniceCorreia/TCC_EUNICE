@@ -1,0 +1,27 @@
+.text-center {
+  text-align: center !important;
+  justify-content: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-tree-node {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.btn {
+  background: #00d084;
+  color: #fff !important;
+  text-transform: uppercase;
+  line-height: 18px;
+  height: auto;
+  width: auto;
+  font-size: 0.8rem;
+}
+
+.ml-10 {
+  margin-left: 10px !important;
+}

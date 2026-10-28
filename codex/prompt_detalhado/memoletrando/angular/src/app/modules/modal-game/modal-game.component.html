@@ -1,0 +1,32 @@
+<div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+        <!-- <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="getTimes()">Fechar</button>
+        </div> -->
+        <div class="container-game">
+            <img src="../../../assets/image/character/brain_question.png" class="character" alt="">
+            <img src="{{image}}" class="image-target" alt="">
+            <img src="../../../assets/image/school_class.png" class="school-class" alt="">
+            <!-- <h1 class="question-text">O que tem na imagem?</h1>
+            <div class="container-image">
+                <div class="char">
+                    <img src="../../../assets/image/char.png" alt="">
+
+                </div>
+                <div class="image">
+                    <div class="frame">
+                        <img src="url_da_imagem" alt="Descrição da imagem">
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div>
+            <input id="text-response" type="text" [(ngModel)]="text" class="termo-input" placeholder="Digite aqui">
+        </div>
+
+        <app-virtual-keyboard style="z-index: 2;" *ngIf="virtualKeyboard"
+            (letterClick)="onLetterClick($event)"></app-virtual-keyboard>
+    </div>
+</div>

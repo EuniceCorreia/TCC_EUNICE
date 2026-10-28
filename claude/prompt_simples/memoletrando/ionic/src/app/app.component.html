@@ -1,0 +1,49 @@
+<ion-app>
+    <ion-split-pane contentId="main-content" when="false">
+        <ion-menu contentId="main-content" type="overlay">
+            <ion-content>
+                <ion-row *ngIf="userService.user">
+                    <ion-col class="avatar">
+                        <ion-icon class="icon-avatar" name="person-circle"></ion-icon>
+                        <div class="text-avatar">
+                            <b>{{ userService.user.avatar_name }}</b>
+                            <small>
+                                <ion-text color="medium">
+                                    {{ userService.user.access_level ? userService.user.access_level.name :
+                                    'Administrador' }}
+                                </ion-text>
+                            </small>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-list id="inbox-list">
+                    <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages;">
+                        <ng-container *ngIf="p.category && p.path">
+                            <ion-item routerDirection="root" [routerLink]="[p.path]" lines="true" detail="true"
+                                routerLinkActive="selected">
+                                <fa-icon [fixedWidth]="true" class="mr-20" [icon]="p.icon"></fa-icon>
+                                <ion-label>{{ p.title }}</ion-label>
+                                <ion-badge *ngIf="p.title == 'Chat' && countMessage > 0" class="pl-5 pr-5 br-10"
+                                    color="danger">{{ countMessage }}</ion-badge>
+                            </ion-item>
+                        </ng-container>
+                        <ng-container *ngIf="!p.category || !p.path">
+                            <ion-label class="text-uppercase menu-separator">
+                                <ion-text color="medium">
+                                    {{p.title}}
+                                </ion-text>
+                            </ion-label>
+                        </ng-container>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false" [hidden]="!_isLogged">
+                        <ion-item class="cursor-pointer" (click)="logoff()" detail="false" lines="true">
+                            <fa-icon [fixedWidth]="true" class="mr-20" [icon]="['fas', 'power-off']"></fa-icon>
+                            <ion-label>Sair</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

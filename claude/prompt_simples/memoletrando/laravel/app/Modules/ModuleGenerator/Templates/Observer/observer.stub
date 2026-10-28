@@ -1,0 +1,34 @@
+<?php
+
+namespace {{Namespace}};
+
+use {{Namespace}}\{{ModelName}};
+use App\Modules\Account\Auditing\AuditingService as Auditing;
+
+class {{ModelName}}Observer
+{
+    public function created({{ModelName}} ${{ModelNameSingularLowerCase}})
+    {
+        Auditing::audit(__('sg.{{ModelNamePluralLowerCase}}::auditing.store'));
+    }
+
+    public function updated({{ModelName}} ${{ModelNameSingularLowerCase}})
+    {
+        Auditing::audit(__('sg.{{ModelNamePluralLowerCase}}::auditing.update'));
+    }
+
+    public function deleted({{ModelName}} ${{ModelNameSingularLowerCase}})
+    {
+        Auditing::audit(__('sg.{{ModelNamePluralLowerCase}}::auditing.delete'));
+    }
+
+    public function restored({{ModelName}} ${{ModelNameSingularLowerCase}})
+    {
+        Auditing::audit(__('sg.{{ModelNamePluralLowerCase}}::auditing.restore'));
+    }
+
+    public function forceDeleted({{ModelName}} ${{ModelNameSingularLowerCase}})
+    {
+        Auditing::audit(__('sg.{{ModelNamePluralLowerCase}}::auditing.force_delete'));
+    }
+}

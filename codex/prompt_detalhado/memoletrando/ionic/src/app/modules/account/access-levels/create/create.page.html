@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button mode="ios" text="" icon="chevron-back-outline" [routerLink]="['/access-levels']"
+                routerLink="back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ editing ? 'Editando' : 'Novo' }} Nível de Acesso</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+    <ion-row>
+        <ion-col class="ion-no-padding">
+            <ion-card color="white" no-margin mode="ios">
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col size-sm="9">
+                            <ion-label class="fw-600" color="medium">Nome</ion-label>
+                            <ion-input class="input-light" [(ngModel)]="access_level.name"></ion-input>
+                        </ion-col>
+                        <ion-col size="3" size-sm="3">
+                            <ion-label class="fw-600" color="medium">Ativo</ion-label>
+                            <ion-toggle mode="md" color="success" [(ngModel)]="access_level.active"></ion-toggle>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row margin-top>
+                        <ion-col>
+                            <ion-label no-margin class="fw-600" color="medium">Permissões</ion-label>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row *ngFor="let permission_category of permission_categories"
+                        style="border-bottom: 1px solid #f1f1f1" class="mb-15">
+                        <ion-col>
+                            <h3 class="text-darkprimary fw-600">{{ permission_category.name }}</h3>
+                            <ion-row>
+                                <ng-container *ngFor="let permission of access_level.permissions">
+                                    <ion-col class="ion-no-padding"
+                                        *ngIf="permission.category.id == permission_category.id">
+                                        <ion-label class="fw-600" no-margin
+                                            [ngClass]="{'text-primary': permission.pivot.allow}">{{ permission.name }}
+                                        </ion-label>
+                                        <ion-toggle class="pl-5" mode="md" size="small" color="primary"
+                                            [(ngModel)]="permission.pivot.allow"></ion-toggle>
+                                    </ion-col>
+                                </ng-container>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row class="ion-justify-content-center">
+                        <ion-col size-sm="4">
+                            <ion-button (click)="save()" expand="full" shape="round" mode="ios" color="success">
+                                Salvar
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>

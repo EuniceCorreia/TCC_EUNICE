@@ -1,0 +1,64 @@
+/* Estilos específicos da tela de jogo */
+
+i.material-icons {
+  font-size: 96px;
+}
+
+.game-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 16px 22px;
+  background: linear-gradient(180deg, var(--forest-800), var(--forest-900));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--gold-500);
+  background: rgba(255, 201, 60, 0.12);
+  border: 1px solid rgba(255, 201, 60, 0.3);
+  padding: 8px 18px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.game-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.game-actions button {
+  color: var(--white);
+  border: none;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0;
+  border-radius: 999px;
+  box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.5);
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.game-actions button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.game-actions #pausar {
+  background: linear-gradient(180deg, var(--sky-500), var(--sky-600));
+}
+
+.game-actions #pausar.pausar--retomar {
+  background: linear-gradient(180deg, var(--green-500), var(--green-600));
+}
+
+.game-actions #finalizar {
+  background: linear-gradient(180deg, var(--coral-500), var(--coral-600));
+}

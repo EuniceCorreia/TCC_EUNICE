@@ -1,0 +1,98 @@
+ion-list{
+    border: none !important;
+}
+
+.container ul {
+  margin: 0;
+//   margin-top: 100px;
+  list-style: none;
+  position: relative;
+//   padding: 1px 100px;
+  color: var(--ion-color-cang4);
+  font-size: 13px;
+}
+.container ul:before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  border-left: 2px dashed var(--ion-color-cang4);
+}
+.container ul li {
+  position: relative;
+  margin-left: 30px;
+  background-color: #fff;
+  padding: 14px;
+  border-radius: 6px;
+//   width: 250px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.08);
+}
+.container ul li:not(:first-child) {
+  margin-top: 60px;
+}
+.container ul li > span {
+  width: 2px;
+  height: 100%;
+  background: var(--ion-color-cang4);
+  left: -30px;
+  top: 0;
+  position: absolute;
+}
+.container ul li > span:before, .container ul li > span:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  position: absolute;
+  background: #86b7e7;
+  left: -5px;
+  top: 0;
+}
+.container ul li > div {
+  margin-left: 10px;
+}
+.container div > div {
+  margin-top: 5px;
+}
+.container span.number {
+  height: 100%;
+}
+
+.datetime {
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+}
+p {
+    margin: 0;
+    color: var(--ion-color-canggray3);
+}
+strong {
+    color: var(--ion-color-cang4);
+}
+.icon {
+    background: #ccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.df {
+    display: inline-flex;
+}
+ul {
+    padding: 0;
+}
+ion-icon[name="trending-up"] {
+    font-size: 50px;
+}
+ion-icon[name="checkmark-circle"]{
+    font-size: 50px;
+}
+ion-icon[name="close-circle"]{
+    font-size: 50px;
+}
+ion-icon[name="book"] {
+    font-size: 50px;
+}

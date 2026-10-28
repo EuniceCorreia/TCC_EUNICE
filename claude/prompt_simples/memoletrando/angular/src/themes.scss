@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$md-green: (
+    50 : #e0f9f0,
+    100 : #b3f1da,
+    200 : #80e8c2,
+    300 : #4ddea9,
+    400 : #26d796,
+    500 : #00d084,
+    600 : #00cb7c,
+    700 : #00c471,
+    800 : #00be67,
+    900 : #00b354,
+    A100 : #dcffea,
+    A200 : #a9ffcc,
+    A400 : #76ffad,
+    A700 : #5dff9e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$my-primary: mat.define-palette($md-green);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+@include mat.all-component-themes($my-theme);

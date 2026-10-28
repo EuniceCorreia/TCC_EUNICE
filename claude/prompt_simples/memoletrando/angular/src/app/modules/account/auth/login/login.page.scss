@@ -1,0 +1,226 @@
+#videoLogin {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+main {
+    background: linear-gradient(90deg, #4c4c4c 41%, #99873e 90%);
+    --background: linear-gradient(90deg, #4c4c4c 41%, #99873e 90%);
+}
+.grid--container {
+    margin: auto 0;
+    max-width: 1200px;
+    width: 100%;
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+}
+
+.grid {
+    // padding-left: 15px;
+    padding-right: 15px;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.div-logo {
+    width: 100%;
+    // max-width: 370px;
+    margin-right: auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    font-size: 1.6rem;
+    // border-radius: 0px 10px 10px 0px;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+    display: flex;
+}
+.authorization__form {
+    width: 100%;
+    // max-width: 370px;
+    margin-right: auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    font-size: 1.6rem;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.welcome {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #44beff;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.input-wrp {
+    position: relative;
+    display: block;
+    width: 100%;
+    line-height: 1;
+    margin-top: 20px;
+}
+
+.password-icon{
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    color: #888a8b;
+    cursor: pointer;
+}
+
+.textfield {
+    display: block;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: none;
+    line-height: 1.2;
+    font-size: 1.1rem;
+    /* font-family: Catamaran, sans-serif !important; */
+    color: #555 !important;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+    height: 55px;
+    padding: 18px 20px !important;
+    border-radius: 30px !important;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.textfield::-webkit-input-placeholder {
+    color: #555;
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+.textfield::-moz-placeholder {
+    color: #555;
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+.textfield:-moz-placeholder {
+    color: #555;
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+.textfield:-ms-input-placeholder {
+    color: #555;
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+.custom-btn {
+    background-color: #003368;
+    color: #fff;
+    border-radius: 30px;
+    padding: 20px 30px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.custom-btn2 {
+    background-color: #10cb6c;
+    color: #fff;
+    border-radius: 30px;
+    padding: 20px 10px;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.forget-password {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    color: #003368;
+    text-decoration: underline;
+    outline: 0;
+    font-size: 1rem;
+}
+
+.card{
+    margin: 50px;
+}
+
+.center{
+    margin: auto;
+    // width: 80%;
+    padding: 10px;
+    text-align: center;
+    background: #fff;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+    
+.full-width {
+    width: 100%;
+}
+
+.mt-mb-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.padding-0{
+    padding: 0;
+}
+
+.tittle-toolbar{
+    background-color:#673ab7;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+div.bg-login {
+    height: 100vh;
+    // background: linear-gradient(177deg, rgb(65, 252, 134), rgb(15, 15, 15));
+    background-image: url("./../../../../../assets/image/bg.svg");
+    background-size: cover;
+    background-position: center;
+}
+div.bg-waves {
+    // background-image: url("./../../../../../assets/image/test.svg");
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    opacity: 0.5;
+}
+
+.mat-spinner {
+    width: 25px !important;
+    margin-right: 10px;
+    --mdc-circular-progress-active-indicator-color: white
+}
+
+.brain-img {
+    transform: scaleX(-1);
+    width: 100%;
+}
+
+.btn {
+    background: #00d084;
+    color: #fff !important;
+    text-transform: uppercase;
+}

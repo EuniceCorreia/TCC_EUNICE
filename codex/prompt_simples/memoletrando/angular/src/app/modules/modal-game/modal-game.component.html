@@ -1,0 +1,14 @@
+﻿<div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+        <div class="container-game">
+            <img src="../../../assets/image/character/brain_question.png" class="character" alt="">
+            <img [src]="image" class="image-target" alt="">
+            <img src="../../../assets/image/school_class.png" class="school-class" alt="">
+        </div>
+        <div>
+            <input #textResponse id="text-response" type="text" [(ngModel)]="text" class="termo-input" placeholder="Digite aqui">
+        </div>
+        <app-virtual-keyboard style="z-index: 2;" *ngIf="virtualKeyboard"
+            (letterClick)="onLetterClick($event)"></app-virtual-keyboard>
+    </div>
+</div>

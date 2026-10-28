@@ -1,0 +1,86 @@
+<?php
+
+namespace {{Namespace}}\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use {{Namespace}}\Http\Requests\{{ModelName}}Request;
+use {{Namespace}}\{{ModelName}}Service;
+use Illuminate\Http\Request;
+
+class {{ModelName}}Controller extends Controller
+{
+    public function __construct({{ModelName}}Service ${{ModelNameSingularLowerCase}}_service)
+    {
+        // $this->authorizeResource("{{Namespace}}\{{ModelName}}", "{{Namespace}}\{{ModelName}}");
+        $this->{{ModelNameSingularLowerCase}}_service = ${{ModelNameSingularLowerCase}}_service;
+    }
+
+    public function store({{ModelName}}Request $request)
+    {
+        return response()->json([
+            'error' => false,
+            'message' => __('sg.{{ModelNamePluralLowerCase}}::toasts.store'),
+            '{{ModelNameSingularLowerCase}}' => $this->{{ModelNameSingularLowerCase}}_service->store($request->toArray()),
+        ]);
+    }
+
+    public function update({{ModelName}}Request $request, $id)
+    {
+        return response()->json([
+            'error' => false,
+            'message' => __('sg.{{ModelNamePluralLowerCase}}::toasts.update'),
+            '{{ModelNameSingularLowerCase}}' => $this->{{ModelNameSingularLowerCase}}_service->update($request->toArray(), $id),
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $this->{{ModelNameSingularLowerCase}}_service->destroy($id);
+
+        return response()->json([
+            'error' => false,
+            'message' => __('sg.{{ModelNamePluralLowerCase}}::toasts.destroy'),
+        ]);
+    }
+
+    public function restore($id)
+    {
+        $this->{{ModelNameSingularLowerCase}}_service->restore($id);
+
+        return response()->json([
+            'error' => false,
+            'message' => __('sg.{{ModelNamePluralLowerCase}}::toasts.restore'),
+        ]);
+    }
+
+    public function get(Request $request)
+    {
+        return response()->json([
+            'error' => false,
+            '{{ModelNamePluralLowerCase}}' => $this->{{ModelNameSingularLowerCase}}_service->api->get($request->toArray()),
+        ]);
+    }
+
+    public function find(Request $request)
+    {
+        return response()->json([
+            'error' => false,
+            '{{ModelNameSingularLowerCase}}' => $this->{{ModelNameSingularLowerCase}}_service->api->find($request->toArray()),
+        ]);
+    }
+
+    public function paginate(Request $request)
+    {
+        return response()->json(
+            $this->{{ModelNameSingularLowerCase}}_service->api->paginate($request->toArray())
+        );
+    }
+
+    protected function resourceAbilityMap()
+    {
+        return array_merge(parent::resourceAbilityMap(), [
+            'ngTableGet' => 'view',
+            'restore' => 'restore',
+        ]);
+    }
+}

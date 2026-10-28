@@ -1,0 +1,11 @@
+<ion-row>
+    <ion-col text-center>
+        {{ title }}
+    </ion-col>
+</ion-row>
+
+<ion-row>
+    <ion-col size="6" *ngFor="let button of buttons">
+        <ion-button mode="ios" expand="full" shape="round" color="{{ button.color }}" (click)="dismiss(button.value)">{{ button.text }}</ion-button>
+    </ion-col>
+</ion-row>

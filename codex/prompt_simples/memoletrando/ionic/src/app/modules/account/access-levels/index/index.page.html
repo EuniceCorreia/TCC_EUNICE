@@ -1,0 +1,109 @@
+<ion-header>
+    <ion-toolbar mode="ios">
+        <ion-menu-button mode="ios" slot="start"></ion-menu-button>
+        <ion-title (click)="content.scrollToTop(500)">Níveis de Acesso</ion-title>
+        <ion-buttons slot="end">
+            <ion-button mode="ios" [routerLink]="['/access-levels/', 0]" *ifAuth="[{create: 'access_levels'}]"
+                color="white">
+                <ion-icon name="add-circle"></ion-icon>
+            </ion-button>
+            <ion-button mode="ios" (click)="toggleSearch()" color="{{ showFilter ? 'medium' : 'white' }}">
+                <ion-icon name="funnel"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+    <ion-refresher class="text-darkprimary" slot="fixed" (ionRefresh)="paginate($event)">
+        <ion-refresher-content pullingText="Atualizar" refreshingSpinner="dots" refreshingText="Atualizando">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-row>
+        <ion-col class="ion-no-padding">
+            <ion-list class="no-border mb-0" lines="full" mode="ios">
+                <!-- filter -->
+                <ion-item-divider mode="md" [hidden]="!showFilter" color="primary">
+                    <ion-col>
+                        <ion-searchbar [(ngModel)]="filters.name" (ionChange)="paginate()" debouce="500"
+                            class="p0 input-light" mode="ios" placeholder="Nome ..." #search></ion-searchbar>
+                    </ion-col>
+                </ion-item-divider>
+
+                <!-- header -->
+                <ion-item-divider mode="md" color="primary">
+                    <ion-col size="2" size-md="1">#ID</ion-col>
+                    <ion-col>
+                        Nome
+                    </ion-col>
+                    <ion-col size="2">
+                        Ativo
+                    </ion-col>
+                    <ion-col size="2" *ifAuth="[{update: 'access_levels'}]"></ion-col>
+                </ion-item-divider>
+
+                <!-- items -->
+                <ion-item-sliding *ngFor="let access_level of access_levels" #slidingItem>
+                    <ion-item>
+                        <ion-col size="2" size-md="1">#{{ access_level.id }}</ion-col>
+                        <ion-col>
+                            {{ access_level.name }}
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-icon name="radio-button-on-outline"
+                                [ngClass]="{'text-success': access_level.active, 'text-danger': !access_level.active}">
+                            </ion-icon>
+                            <span class="ion-hide-sm-down">{{ access_level.active ? 'Ativo' : 'Inativo' }}</span>
+                        </ion-col>
+                        <ion-col size="2" *ifAuth="[{update: 'access_levels'}]">
+                            <ion-button [routerLink]="['/access-levels/', access_level.id]" routerDirection="forward"
+                                expand="block" color="primary" *ifAuth="[{update: 'access_levels'}]">
+                                <ion-icon slot="start" name="create"></ion-icon><span
+                                    class="ion-hide-sm-down">editar</span>
+                            </ion-button>
+                        </ion-col>
+                    </ion-item>
+                    <ion-item-options>
+                        <ion-item-option color="danger" expandable (click)="remove(access_level, $event, slidingItem)"
+                            *ifAuth="[{delete: 'access_levels'}]">
+                            <ion-icon slot="start" name="trash"></ion-icon>
+                            remover
+                        </ion-item-option>
+                    </ion-item-options>
+                </ion-item-sliding>
+
+                <ng-container *ngIf="loading">
+                    <div *ngFor="let tr of trs">
+                        <ion-skeleton-text animated style="width: 100%; height: 50px"></ion-skeleton-text>
+                    </div>
+                </ng-container>
+
+                <ion-infinite-scroll threshold="30px" (ionInfinite)="paginate(null, $event)">
+                    <ion-infinite-scroll-content loadingSpinner="none"></ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+
+                <ion-row class="no-border" text-center
+                    *ngIf="total_of_data === access_levels.length && total_of_data>0">
+                    <ion-col class="text-center">
+                        <ion-icon [hidden]="access_levels.length < 10" color="medium" class="mt-15 ion-float-end"
+                            size="large" name="caret-up-circle-outline" (click)="content.scrollToTop(500)">
+                        </ion-icon>
+                        <ion-label color="medium" class="p20">
+                            Todos os registros foram listados <ion-icon name="thumbs-up" color="medium"></ion-icon>
+                        </ion-label>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row color="light" text-center *ngIf="!loading && !access_levels.length">
+                    <ion-col>
+                        <ion-label padding-top padding-bottom>
+                            Não há registros.
+                        </ion-label>
+                    </ion-col>
+                </ion-row>
+            </ion-list>
+
+        </ion-col>
+    </ion-row>
+</ion-content>

@@ -1,0 +1,14 @@
+<ion-row>
+    <ion-col class="text-center">
+        {{ title }}
+    </ion-col>
+</ion-row>
+
+<ion-row class="p10" *ngIf="buttons.length">
+    <ion-col size="6" *ngFor="let button of buttons">
+        <ion-button mode="ios" expand="block" shape="round" color="{{ button.color }}" (click)="dismiss(button.value)">
+            <ion-icon *ngIf="button.icon" slot="start" name="{{button.icon}}" class="m0 mr-5"></ion-icon>
+            {{ button.text }}
+        </ion-button>
+    </ion-col>
+</ion-row>

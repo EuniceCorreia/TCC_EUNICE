@@ -1,0 +1,5 @@
+{
+    "name": "QueridaFloresta.EditorTests",
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

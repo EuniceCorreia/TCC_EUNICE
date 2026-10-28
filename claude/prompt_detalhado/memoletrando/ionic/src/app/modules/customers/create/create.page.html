@@ -1,0 +1,106 @@
+<ion-header>
+    <ion-toolbar mode="ios" color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button mode="ios" text="" icon="chevron-back-outline" [routerLink]="['/customers']"
+                routerLink="back">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title (click)="debug()">{{ editing ? 'Editando' : 'Novo' }} Cliente </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-segment mode="md" color="primary" (ionChange)="changeSegment($event)" value="general">
+        <ion-segment-button mode="md" value="general">
+            <ion-label><strong>Dados Gerais</strong></ion-label>
+        </ion-segment-button>
+        <ion-segment-button mode="md" value="address">
+            <ion-label><strong>Endereço</strong></ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+    <ion-row>
+        <ion-col class="ion-no-padding">
+            <div [hidden]="page != 'general'">
+                <ion-card class="m0" color="white" mode="ios">
+                    <ion-card-content>
+                        <ion-row>
+                            <ion-col size="12" size-sm="5">
+                                <ion-label class="fw-600" color="medium">Nome*</ion-label>
+                                <ion-input type="text" class="input-light" [(ngModel)]="customer.user.name"></ion-input>
+                            </ion-col>
+                            <ion-col size="12" size-sm="5">
+                                <ion-label class="fw-600" color="medium">E-mail</ion-label>
+                                <ion-input type="text" class="input-light" [(ngModel)]="customer.user.email">
+                                </ion-input>
+                            </ion-col>
+                            <ion-col size="12" size-md="2">
+                                <ion-label class="fw-600" color="medium">&nbsp;</ion-label>
+                                <ion-item mode="md" class="no-border">
+                                    <ion-toggle slot="start" mode="md" color="success"
+                                        [(ngModel)]="customer.user.active">
+                                    </ion-toggle>
+                                    <ion-label
+                                        [ngClass]="{ 'text-success': customer.user.active, 'text-danger': !customer.user.active }">
+                                        Acesso {{ customer.user.active ? 'PERMITIDO' : 'NEGADO' }}</ion-label>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="12" size-sm="4">
+                                <ion-label class="fw-600" color="medium">CPF</ion-label>
+                                <input type="tel" class="input-light" [(ngModel)]="customer.doc" mask="000.000.000-00">
+                            </ion-col>
+                            <ion-col size="12" size-sm="4">
+                                <ion-label class="fw-600" color="medium">Telefone</ion-label>
+                                <input type="tel" class="input-light" [(ngModel)]="customer.phone.number"
+                                    mask="{{ mask }}" (ngModelChange)="setMask()">
+                            </ion-col>
+                            <ion-col size="12" size-md="4">
+                                <ion-label class="fw-600" color="medium">
+                                    Data de Nascimento
+                                </ion-label>
+                                <input type="tel" class="input-light" [(ngModel)]="customer.birth_date"
+                                    mask="00/00/0000" placeholder="DD/MM/AAAA">
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="6">
+                                <ion-label class="fw-600" color="medium">Senha*</ion-label>
+                                <ion-input type="password" class="input-light" [(ngModel)]="customer.user.password"
+                                    placeholder="Só preecher se quiser alterar"></ion-input>
+                            </ion-col>
+                            <ion-col size="6">
+                                <ion-label class="fw-600" color="medium">Confirmar Senha*</ion-label>
+                                <ion-input type="password" class="input-light"
+                                    [(ngModel)]="customer.user.password_confirmation"
+                                    placeholder="Só preecher se quiser alterar"></ion-input>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+
+            <div [hidden]="page != 'address'">
+                <ion-card class="m0 mb-20" color="white" mode="ios">
+                    <ion-card-content>
+                        <address-form [address]="customer.address" [is_customer]="true"></address-form>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+
+            <ion-row class="mt-20 ion-justify-content-center">
+                <ion-col size="12" size-sm="4">
+                    <ion-button (click)="save()" expand="full" shape="round" mode="ios" color="success"
+                        [disabled]="loading">
+                        Salvar
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+
+        </ion-col>
+    </ion-row>
+</ion-content>

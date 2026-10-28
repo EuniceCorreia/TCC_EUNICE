@@ -1,0 +1,17 @@
+.container {
+  height: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.vertical-center {
+  margin: 0 auto;
+  position: inherit;
+  top: 15%;
+  width: 100%;
+}
+
+.color-game {
+  background-color: #ccfcd0;
+  color: gray;
+}

@@ -1,0 +1,35 @@
+using UnityEngine;
+
+// Many thanks to Eldoir for this code
+// https://answers.unity.com/users/546375/eldoir.html
+public static class RectTransformExtensions
+{
+    public static void SetLeft(this RectTransform rt, float left)
+    {
+        rt.offsetMin = new Vector2(left, rt.offsetMin.y);
+    }
+
+    public static void SetRight(this RectTransform rt, float right)
+    {
+        rt.offsetMax = new Vector2(-right, rt.offsetMax.y);
+    }
+
+    public static void SetTop(this RectTransform rt, float top)
+    {
+        rt.offsetMax = new Vector2(rt.offsetMax.x, -top);
+    }
+
+    public static void SetBottom(this RectTransform rt, float bottom)
+    {
+        rt.offsetMin = new Vector2(rt.offsetMin.x, bottom);
+    }
+
+    public static void SetOffsets(
+        this RectTransform rt, float left, float top, float right, float bottom)
+    {
+        rt.SetLeft(left);
+        rt.SetTop(top);
+        rt.SetRight(right);
+        rt.SetBottom(bottom);
+    }
+}

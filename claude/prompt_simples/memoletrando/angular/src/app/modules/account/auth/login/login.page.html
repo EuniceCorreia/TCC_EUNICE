@@ -1,0 +1,41 @@
+<div class="padding-0 bg-login">
+    <!-- <div class="bg-waves"></div> -->
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-12">
+                <mat-card class="center padding-0 mt-mb-auto">
+                    <!-- <mat-card-title class="title-toolbar mt-2 mb-2 text-primary">Entrar</mat-card-title> -->
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-3 d-flex align-items-center">
+                                <img src="./../../../../../assets/image/character/brain_nice.png" class="brain-img">
+                            </div>
+                            <div class="col-9">
+                                <h2 class="text-primary">ENTRAR</h2>
+                                <mat-form-field appearance="fill" class="full-width" *ngIf="teachers.length">
+                                    <mat-label>PROFESSOR(A) ou TURMA</mat-label>
+                                    <select matNativeControl required [(ngModel)]="credentials.teacher_id">
+                                        <option value="{{ teacher.id }}" *ngFor="let teacher of teachers">{{ teacher.name }}</option>
+                                    </select>
+                                </mat-form-field>
+                
+                                <mat-form-field class="full-width">
+                                    <mat-label>USUÁRIO</mat-label>
+                                    <input matInput [(ngModel)]="credentials.username" required>
+                                </mat-form-field>
+                
+                                <mat-form-field class="full-width">
+                                    <mat-label>SENHA</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="credentials.password"  required>
+                                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </mat-form-field>
+                
+                                <button mat-stroked-button class="btn full-width" (click)="login()">Entrar</button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
